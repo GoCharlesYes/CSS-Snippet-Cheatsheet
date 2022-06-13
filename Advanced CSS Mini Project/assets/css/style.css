@@ -1,5 +1,54 @@
+:root {
+    --darkblue: #326592;
+    --neongreen: #39FF14;
+    --white: #fff;
+}
+
 main {
+    background-color: var(--darkblue);
+}
+
+code {
+    font-family: 'Consolas', 'Lucida Console';
+}
+
+.row {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.card-column {
+    flex: 1 0 100%;
+    transition: flex-basis 500ms linear;
+}
+
+.code-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: var(--neongreen);
+    outline: 3px dashed var(--white);
+    transition: all 0.5s ease-in-out;
+    padding: 5px;
+}
+
+.code-card .card-header {
+    position: relative;
+    background-color: var(--darkblue);
+    color: var(--neongreen);
+    border: 2px solid var(--white);
+    border-radius: 5px;
+    padding: 5px;
+    margin: -40px 0 15px 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.code-card:hover,
+.code-card:hover .card-header {
+    box-shadow: inset 0px 0px 8px var(--neongreen), 0 0 15px var(--neongreen);
 }
