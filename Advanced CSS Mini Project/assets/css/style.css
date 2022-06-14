@@ -1,46 +1,71 @@
 :root {
-    --darkblue: #326592;
-    --neongreen: #39FF14;
+    --darkblue: #183650;
+    --neonyellow: #E0E722;
     --white: #fff;
 }
 
-main {
+/* Was originally 'main' instead of 'html' to colour whole webpage */
+html {
     background-color: var(--darkblue);
 }
 
+header {
+    width: 100%;
+    margin: 0 125px;
+    padding: 25px;
+    text-align: center;
+    color: var(--neonyellow);
+  }
+/* Changes colour for highlighted items */
+::selection {
+    background-color: #45f2f8;
+    color: #002efc;
+}
+
+/* Changes font of text in flexboxes */
 code {
     font-family: 'Consolas', 'Lucida Console';
+}
+
+footer {
+    text-align: center;
+    color: var(--neonyellow);
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    margin-left: -15px;
+    margin-right: -15px;
 }
 
 .justify-center {
     justify-content: center;
 }
 
+/* Added display: grid to align all boxes together */
 .card-column {
     flex: 1 0 100%;
     transition: flex-basis 500ms linear;
+    display: grid;
 }
 
 .code-card {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    color: var(--neongreen);
+    color: var(--neonyellow);
     outline: 3px dashed var(--white);
     transition: all 0.5s ease-in-out;
     padding: 5px;
+    margin-top: 40px;
 }
 
 .code-card .card-header {
     position: relative;
     background-color: var(--darkblue);
-    color: var(--neongreen);
+    color: var(--neonyellow);
     border: 2px solid var(--white);
     border-radius: 5px;
     padding: 5px;
@@ -48,7 +73,57 @@ code {
     transition: all 0.5s ease-in-out;
 }
 
+/* First code-card targets whole box, second code-card targets only header */
 .code-card:hover,
 .code-card:hover .card-header {
-    box-shadow: inset 0px 0px 8px var(--neongreen), 0 0 15px var(--neongreen);
+    box-shadow: inset 0px 0px 8px var(--neonyellow) , 0 0 15px var(--neonyellow);
 }
+
+.code-card .code-block {
+    flex-grow: 1;
+}
+
+/* COME BACK TO THIS TO ADD BACKGROUND TO TEXT IN BOX */
+.code-card pre {
+    white-space: pre-wrap;
+    overflow: auto;
+    tab-size: 4;
+    padding: 12px 10px;
+    color: var(--white);
+    border-radius: 8px;
+    background-image: linear-gradient(
+        rgba(232, 102, 236, 0.3) 0%
+        rgba(45, 197, 235) 100%
+    );
+    display: flex;
+    align-items: center;
+}
+
+/* Makes all items in 'pre' highlighted when clicked */
+.code-card pre:active {
+    user-select: all;
+}
+
+@media screen and (min-width: 768px) {
+    .card-column {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .card-column:last-child {
+        flex-grow: 1;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    header {
+      width: 75%;
+    }
+  
+    .card-column {
+      flex: 0 0 33.333%;
+      max-width: 33.333%;
+    }
+}
+
+/* ADD LINKS TO EACH BOX TO MDN WEBDOCS */
